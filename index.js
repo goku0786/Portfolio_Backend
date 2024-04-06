@@ -15,7 +15,6 @@ const corsOptions = {
     const allowedOrigins = [
       "http://localhost:5173",
       "https://goku0786portfolio.netlify.app",
-      "https://portfolio-backend-bal8.onrender.com"
     ];
     const isAllowed = allowedOrigins.includes(origin);
     callback(null, isAllowed ? origin : false);
