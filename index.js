@@ -14,7 +14,6 @@ const corsOptions = {
       // Check if the origin is allowed
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://portfolio-backend-bal8.onrender.com",
       ];
       const isAllowed = allowedOrigins.includes(origin);
       callback(null, isAllowed ? origin : false);
@@ -35,7 +34,7 @@ app.use('/api/admin', adminRoute);
 
 app.use(errorMiddleware);
 
-const PORT = 5000;
+const PORT =5000;
 
 connectDb().then(() => {
     app.listen(PORT, () => {
