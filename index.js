@@ -10,18 +10,19 @@ const connectDb = require('./utils/db');
 const errorMiddleware = require("./middleware/error-middleware");
 
 const corsOptions = {
-    origin: (origin, callback) => {
-      // Check if the origin is allowed
-      const allowedOrigins = [
-        "http://localhost:5173",
-        "https://portfolio-backend-bal8.onrender.com"
-      ];
-      const isAllowed = allowedOrigins.includes(origin);
-      callback(null, isAllowed ? origin : false);
-    },
-    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
-    credentials: true,
-  };
+  origin: (origin, callback) => {
+    // Check if the origin is allowed
+    const allowedOrigins = [
+      "http://localhost:5173",
+      "https://goku0786portfolio.netlify.app",
+      "https://portfolio-backend-bal8.onrender.com"
+    ];
+    const isAllowed = allowedOrigins.includes(origin);
+    callback(null, isAllowed ? origin : false);
+  },
+  methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+  credentials: true,
+};
 
 app.use(cors(corsOptions));
 
@@ -38,7 +39,7 @@ app.use(errorMiddleware);
 const port = process.env.PORT || 5000;
 
 connectDb().then(() => {
-    app.listen(port, () => {
-        console.log(`server is running on  PORT ${port}`);
-    });
+  app.listen(port, () => {
+    console.log(`server is running on  PORT ${port}`);
+  });
 });
