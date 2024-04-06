@@ -10,10 +10,18 @@ const connectDb = require('./utils/db');
 const errorMiddleware = require("./middleware/error-middleware");
 
 const corsOptions = {
-    origin: "https://portfolio-backend-bal8.onrender.com",
-    methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
+    origin: (origin, callback) => {
+      // Check if the origin is allowed
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://portfolio-backend-bal8.onrender.com",
+      ];
+      const isAllowed = allowedOrigins.includes(origin);
+      callback(null, isAllowed ? origin : false);
+    },
+    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
-}
+  };
 
 app.use(cors(corsOptions));
 
